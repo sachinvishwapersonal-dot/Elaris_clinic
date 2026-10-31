@@ -1,0 +1,991 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<title>Elaris Women &amp; Vision Centre</title>
+<meta name="description" content="Fertility, IVF and women's health care in Nagpur with Dr. Purval Vaidya.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: card-derived. Light top / forest-green band, joined by the card's curved gold line. Hash-routed views. */
+/* Single light look by choice: white + fresh green, gold used sparingly. */
+:root{
+  --bg:#FFFFFF; --surface:#FFFFFF; --soft:#F6FBF8; --tint:#E6F4EC; --ink:#163226; --muted:#5A6E62; --line:#E1EBE5;
+  --band:#F0F8F3; --band-2:#FFFFFF; --on-band:#163226; --on-band-muted:#5A6E62;
+  --accent:#1C6A46; --accent-2:#2F9466; --accent-deep:#14513A; --on-accent:#FFFFFF; --gold:#A57C3C; --gold-soft:#F5ECDC;
+  --ok:#2F7A4C; --ok-bg:#E2F1E7; --warn:#946200; --warn-bg:#FBF0D6; --bad:#A33A2E; --bad-bg:#F8E3E0;
+  --shadow:0 1px 2px rgba(22,50,38,.05),0 14px 34px -18px rgba(22,50,38,.28);
+  color-scheme:light;
+  --display:"Marcellus", "Cormorant Garamond", Georgia, serif;
+  --body:"Outfit", "Segoe UI", system-ui, sans-serif;
+  --r:14px;
+}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;font-weight:400}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--surface)}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.1rem,5vw,3.4rem)}
+h2{font-size:clamp(1.6rem,3.4vw,2.3rem)}
+h3{font-size:1.3rem}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.lede{color:var(--muted);font-size:1.08rem;max-width:62ch}
+.stack{display:flex;flex-direction:column;gap:14px}
+.ph{border-bottom:1.5px dashed var(--gold);color:var(--gold);cursor:help;white-space:nowrap}
+
+/* prototype bar */
+.proto{background:var(--gold-soft);color:var(--ink);font-size:.86rem}
+.proto .wrap{padding-block:8px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center;text-align:center}
+.proto b{font-weight:600}
+
+/* header */
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--surface);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;gap:20px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.brand svg{width:40px;height:40px;flex:none}
+.brand .word{font-family:var(--display);font-size:1.55rem;letter-spacing:.12em;line-height:1;color:var(--accent)}
+.brand .sub{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:4px}
+nav.main{display:flex;gap:4px;margin-left:auto;align-items:center}
+nav.main a{text-decoration:none;font-size:.93rem;padding:8px 10px;border-radius:8px;color:var(--muted)}
+nav.main a:hover{color:var(--ink);background:var(--tint)}
+nav.main a[aria-current="page"]{color:var(--accent);font-weight:500}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:500;font-size:.95rem;padding:12px 22px;border-radius:999px;border:1.5px solid var(--accent);background:linear-gradient(135deg,var(--accent-2),var(--accent));color:var(--on-accent);text-decoration:none;cursor:pointer;box-shadow:0 10px 22px -12px rgba(28,106,70,.7);transition:transform .15s ease, box-shadow .15s, opacity .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 14px 26px -12px rgba(28,106,70,.75)}
+.btn.ghost{background:var(--surface);color:var(--accent);box-shadow:none}
+.btn.ghost:hover{background:var(--tint)}
+.btn.small{padding:7px 14px;font-size:.85rem}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+nav.main .btn{margin-left:8px;color:var(--on-accent)}
+.menu-btn{display:none;margin-left:auto;background:none;border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;font:inherit;color:var(--ink);cursor:pointer}
+@media (max-width:1000px){
+  .menu-btn{display:inline-flex}
+  nav.main{display:none;position:absolute;left:0;right:0;top:100%;background:var(--surface);flex-direction:column;align-items:stretch;padding:10px max(16px,env(safe-area-inset-left,0px)) 18px;border-bottom:1px solid var(--line);gap:2px}
+  nav.main.open{display:flex}
+  nav.main .btn{margin:8px 0 0}
+}
+
+/* the card's curve */
+.curve{display:block;width:100%;height:clamp(50px,7vw,96px);color:var(--band)}
+.band{background:var(--band);color:var(--on-band)}
+.band .lede,.band .muted{color:var(--on-band-muted)}
+.band .eyebrow{color:var(--gold)}
+
+section{padding-block:clamp(48px,7vw,88px)}
+.view{animation:fade .35s ease}
+@keyframes fade{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.view{animation:none}.btn{transition:none}}
+
+/* hero */
+.hero{padding-block:clamp(40px,6vw,80px) clamp(32px,5vw,56px);background:radial-gradient(55% 65% at 82% 35%,var(--tint) 0,transparent 70%),radial-gradient(45% 55% at 0% 100%,var(--soft) 0,transparent 70%),var(--bg)}
+h1 em{font-style:normal;color:var(--accent);background:linear-gradient(transparent 70%,var(--gold-soft) 70%)}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.hero .stack{gap:20px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.phone-line{font-size:.92rem;color:var(--muted)}
+.phone-line b{color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+.portrait{position:relative;justify-self:center;width:min(380px,100%)}
+.portrait::before{content:"";position:absolute;inset:-14px;border-radius:50%;border:1.5px dashed var(--gold);opacity:.55;pointer-events:none}
+.portrait .ring{aspect-ratio:1;max-width:100%;border-radius:50%;padding:14px;background:linear-gradient(160deg,var(--tint),var(--surface));border:1px solid var(--line);box-shadow:var(--shadow)}
+.portrait img{display:block;width:100%;aspect-ratio:1;border-radius:50%;object-fit:cover}
+.portrait .tag{position:absolute;left:-6px;bottom:22px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;box-shadow:0 10px 30px -14px rgba(20,37,27,.35);font-size:.85rem;line-height:1.35}
+.portrait .tag b{display:block;font-family:var(--display);font-weight:400;font-size:1.05rem}
+.portrait .tag span{color:var(--muted)}
+.trust{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.88rem;color:var(--muted);padding-top:6px}
+.trust span{display:inline-flex;gap:7px;align-items:center}
+.trust span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold)}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr}.portrait{order:-1;width:min(300px,82%)}}
+
+/* grids */
+.grid{display:grid;gap:18px}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:900px){.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.g3,.g2,.g4{grid-template-columns:1fr}}
+.tile{background:var(--band-2);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--on-band);border:1px solid var(--line);box-shadow:var(--shadow);transition:transform .18s ease, border-color .18s}
+a.tile:hover{transform:translateY(-3px);border-color:var(--accent-2)}
+.tile p{color:var(--on-band-muted);font-size:.95rem}
+.tile .more{margin-top:auto;padding-top:8px;font-size:.88rem;color:var(--accent);font-weight:500}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:8px;min-width:0;box-shadow:var(--shadow)}
+a.card{color:var(--ink);transition:transform .18s ease, border-color .18s}
+a.card:hover{transform:translateY(-3px);border-color:var(--accent-2)}
+.ico{width:48px;height:48px;border-radius:14px;background:var(--tint);color:var(--accent);display:grid;place-items:center;flex:none}
+.ico svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.features{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-block:clamp(32px,4vw,52px) 8px}
+.feature{display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow);min-width:0}
+.feature .ico{width:42px;height:42px;border-radius:12px}
+.feature b{display:block;font-weight:500;font-size:.95rem;line-height:1.3}
+.feature span.t{font-size:.82rem;color:var(--muted);line-height:1.35;display:block}
+@media (max-width:900px){.features{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.features{grid-template-columns:1fr}}
+.tag2{position:absolute;right:-6px;top:28px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:.82rem;box-shadow:var(--shadow);display:flex;gap:8px;align-items:center}
+.tag2 .dot{width:8px;height:8px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 0 4px var(--tint)}
+.cta-band{padding-block:clamp(40px,6vw,72px)}
+.cta-box{background:linear-gradient(135deg,var(--accent-2),var(--accent) 55%,var(--accent-deep));color:var(--on-accent);border-radius:28px;padding:clamp(28px,5vw,56px);display:flex;justify-content:space-between;gap:24px;align-items:center;flex-wrap:wrap;position:relative;overflow:hidden;box-shadow:0 30px 60px -30px rgba(28,106,70,.6)}
+.cta-box h2{color:var(--on-accent)}
+.cta-box p{color:var(--on-accent);opacity:.85;max-width:52ch;margin-top:10px}
+.cta-box .btn{background:var(--on-accent);color:var(--accent);border-color:var(--on-accent)}
+.cta-box .btn.ghost{background:transparent;color:var(--on-accent);border-color:rgba(255,255,255,.6)}
+.cta-box .wm{position:absolute;right:-40px;bottom:-60px;width:260px;height:260px;color:var(--on-accent);opacity:.12;pointer-events:none}
+.cta-box > *{position:relative}
+.card p{color:var(--muted);font-size:.96rem}
+.card ul{margin:4px 0 0;padding-left:18px;color:var(--muted);font-size:.94rem}
+.chip{display:inline-block;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.sec-head{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+@media (max-width:820px){.split{grid-template-columns:1fr}}
+
+/* journey */
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;counter-reset:s}
+.steps li{display:grid;grid-template-columns:56px 1fr;gap:16px;padding-bottom:26px;position:relative;counter-increment:s}
+.steps li::before{content:counter(s);width:44px;height:44px;border-radius:50%;border:1.5px solid var(--gold);display:grid;place-items:center;font-family:var(--display);font-size:1.15rem;color:var(--gold);background:var(--bg)}
+.steps li::after{content:"";position:absolute;left:22px;top:46px;bottom:4px;width:1.5px;background:var(--line)}
+.steps li:last-child::after{display:none}
+.steps h3{font-size:1.2rem}
+.steps .dur{font-size:.85rem;color:var(--gold);font-weight:500}
+.steps p{color:var(--muted)}
+.timeline{display:flex;border-radius:10px;overflow:hidden;font-size:.78rem;margin-top:18px}
+.timeline div{padding:10px 8px;background:var(--tint);border-right:2px solid var(--bg);min-width:0}
+.timeline div:nth-child(even){background:var(--gold-soft)}
+.timeline b{display:block;font-weight:600}
+.tl-wrap{overflow-x:auto}
+.tl-wrap .timeline{min-width:640px}
+
+/* table */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+tr:last-child td{border-bottom:none}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* faq */
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;font-weight:500;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--display);color:var(--gold);font-size:1.4rem;line-height:1}
+details[open] summary::after{content:"−"}
+details p{color:var(--muted);margin-top:10px;max-width:70ch}
+
+/* photo placeholders */
+.photo-ph{aspect-ratio:4/3;max-width:100%;border-radius:var(--r);background:repeating-linear-gradient(135deg,var(--tint) 0 12px,var(--bg) 12px 24px);border:1.5px dashed var(--line);display:grid;place-items:center;color:var(--muted);font-size:.88rem;text-align:center;padding:12px}
+
+/* hours */
+.hours{display:grid;grid-template-columns:auto 1fr;gap:6px 22px;font-variant-numeric:tabular-nums}
+.hours dt{color:var(--muted)} .hours dd{margin:0}
+
+/* booking */
+.book-shell{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px;align-items:start}
+@media (max-width:900px){.book-shell{grid-template-columns:1fr}}
+.stepper{display:flex;gap:6px;list-style:none;padding:0;margin:0 0 22px;flex-wrap:wrap}
+.stepper li{flex:1 1 120px;font-size:.84rem;color:var(--muted);padding-top:10px;border-top:3px solid var(--line)}
+.stepper li.on{color:var(--ink);border-color:var(--gold);font-weight:500}
+.stepper li.done{border-color:var(--accent);color:var(--ink)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:clamp(18px,3vw,30px);display:flex;flex-direction:column;gap:20px}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:600px){.opts{grid-template-columns:1fr}}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.opt label{display:flex;flex-direction:column;gap:4px;border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;height:100%}
+.opt label b{font-weight:500}
+.opt label span{font-size:.88rem;color:var(--muted)}
+.opt input:checked+label{border-color:var(--accent);background:var(--tint)}
+.opt input:focus-visible+label{outline:2px solid var(--gold);outline-offset:2px}
+.opt input:disabled+label{opacity:.45;cursor:not-allowed}
+.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
+.day{flex:none;width:70px;border:1.5px solid var(--line);border-radius:12px;padding:8px 4px;text-align:center;background:var(--surface);font:inherit;color:var(--ink);cursor:pointer;line-height:1.25}
+.day small{display:block;font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.day b{display:block;font-size:1.3rem;font-weight:500;font-variant-numeric:tabular-nums}
+.day.on{border-color:var(--accent);background:var(--accent);color:var(--on-accent)}
+.day.on small{color:var(--on-accent);opacity:.8}
+.day[disabled]{opacity:.4;cursor:not-allowed;text-decoration:line-through}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px}
+.slot{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:9px 4px;font:inherit;font-size:.9rem;cursor:pointer;font-variant-numeric:tabular-nums}
+.slot:hover:not([disabled]){border-color:var(--accent)}
+.slot.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.slot[disabled]{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.slot-group h4{margin:0 0 8px;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:600px){.fields{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font-size:.88rem;font-weight:500}
+.field .hint{font-size:.8rem;color:var(--muted)}
+.field input,.field select,.field textarea{font:inherit;font-size:.95rem;padding:11px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+.field .err{font-size:.8rem;color:var(--bad)}
+.field.bad input{border-color:var(--bad)}
+.subhead{font-family:var(--display);font-size:1.15rem;grid-column:1/-1;padding-top:6px;border-top:1px solid var(--line);margin-top:4px;padding-top:16px}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;color:var(--muted)}
+.check input{margin-top:4px;accent-color:var(--accent);width:18px;height:18px;flex:none}
+.actions{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.summary{position:sticky;top:calc(env(safe-area-inset-top,0px) + 88px)}
+.summary dl{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:0;font-size:.92rem}
+.summary dt{color:var(--muted)} .summary dd{margin:0;font-weight:500}
+.note{font-size:.85rem;color:var(--muted);background:var(--tint);border-radius:10px;padding:12px 14px}
+.bubble{background:var(--tint);border-radius:16px 16px 16px 4px;padding:12px 16px;max-width:420px;font-size:.93rem}
+.bubble small{display:block;color:var(--muted);font-size:.75rem;margin-top:6px}
+.ref{font-variant-numeric:tabular-nums;font-weight:600;letter-spacing:.06em}
+
+/* desk */
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:600px){.stats{grid-template-columns:1fr}}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.stat b{display:block;font-family:var(--display);font-size:2rem;font-weight:400;font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted);font-size:.88rem}
+.pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.78rem;font-weight:500;white-space:nowrap}
+.pill.confirmed{background:var(--ok-bg);color:var(--ok)}
+.pill.pending{background:var(--warn-bg);color:var(--warn)}
+.pill.arrived{background:var(--tint);color:var(--accent)}
+.pill.cancelled{background:var(--bad-bg);color:var(--bad)}
+.sample{font-size:.7rem;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 6px;margin-left:6px}
+.row-actions{display:flex;gap:6px;flex-wrap:wrap}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chipbtn{font:inherit;font-size:.85rem;padding:7px 12px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;font-variant-numeric:tabular-nums}
+.chipbtn.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.chipbtn.blocked{background:var(--bad-bg);border-color:var(--bad);color:var(--bad);text-decoration:line-through}
+.chipbtn[disabled]{opacity:.4;cursor:not-allowed}
+
+/* footer */
+footer{background:var(--band);color:var(--on-band);padding-block:48px 28px}
+footer .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px}
+@media (max-width:820px){footer .cols{grid-template-columns:1fr}}
+footer a{color:var(--on-band);text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer .muted{color:var(--on-band-muted);font-size:.9rem}
+footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px;font-size:.93rem}
+footer h4{margin:0 0 12px;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px;font-size:.84rem;color:var(--on-band-muted)}
+.legal .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.credit b{color:var(--gold);font-weight:500}
+.brand.inv .word{color:var(--accent)}
+
+/* hero booking demo */
+.demo{position:relative;justify-self:center;width:min(390px,100%)}
+.demo::before{content:"";position:absolute;inset:-10% -14%;background:radial-gradient(closest-side,var(--tint),transparent);pointer-events:none}
+.device{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:20px;box-shadow:0 2px 4px rgba(22,50,38,.04),0 30px 60px -28px rgba(22,50,38,.38)}
+.dev-head{display:flex;gap:12px;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.dev-logo{width:34px;height:34px;color:var(--accent);flex:none}
+.dev-head b{display:block;font-weight:500;font-size:.98rem;line-height:1.2}
+.dev-head span{font-size:.75rem;color:var(--muted)}
+.prog{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:14px 0 16px}
+.prog button{background:none;border:0;padding:0;font:inherit;cursor:pointer;display:flex;flex-direction:column;gap:6px;text-align:left;color:var(--muted)}
+.prog i{display:block;height:4px;border-radius:4px;background:var(--line);overflow:hidden;position:relative}
+.prog i::after{content:"";position:absolute;inset:0;width:0;background:var(--accent-2);border-radius:inherit}
+.prog span{font-size:.72rem;letter-spacing:.03em}
+.prog button.done i::after{width:100%}
+.prog button.on i::after{animation:fill var(--dur,3.4s) linear forwards}
+.prog button.on span,.prog button.done span{color:var(--ink)}
+@keyframes fill{to{width:100%}}
+.stage{position:relative;height:292px}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;gap:9px;opacity:0;transform:translateX(14px);transition:opacity .45s ease,transform .45s ease;pointer-events:none}
+.demo[data-s="1"] [data-n="1"],.demo[data-s="2"] [data-n="2"],.demo[data-s="3"] [data-n="3"],.demo[data-s="4"] [data-n="4"]{opacity:1;transform:none}
+.q{font-size:.74rem;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.09em}
+.opt-m{display:flex;gap:12px;align-items:center;border:1.5px solid var(--line);border-radius:14px;padding:11px 13px;font-size:.9rem;line-height:1.3}
+.opt-m b{font-weight:500;display:block}
+.opt-m small{color:var(--muted);font-size:.78rem}
+.rad{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line);flex:none;position:relative}
+.rad::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--accent);transform:scale(0)}
+.demo[data-s="1"] .o1{animation:pickb .35s 1s forwards}
+.demo[data-s="1"] .o1 .rad{animation:pickr .3s 1s forwards}
+.demo[data-s="1"] .o1 .rad::after{animation:pop .3s 1s forwards}
+@keyframes pickb{to{border-color:var(--accent-2);background:var(--tint)}}
+@keyframes pickr{to{border-color:var(--accent)}}
+@keyframes pop{to{transform:scale(1)}}
+.days-m{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-bottom:6px}
+.days-m span{border:1.5px solid var(--line);border-radius:12px;text-align:center;padding:6px 0;font-size:.7rem;color:var(--muted);line-height:1.25}
+.days-m b{display:block;font-size:1.05rem;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+.slots-m{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.slots-m span{border:1.5px solid var(--line);border-radius:10px;text-align:center;padding:6px 0;font-size:.82rem;font-variant-numeric:tabular-nums}
+.slots-m .x{opacity:.35;text-decoration:line-through}
+.demo[data-s="2"] .days-m .pk{animation:pickd .3s .8s forwards}
+.demo[data-s="2"] .days-m .pk b{animation:pickt .3s .8s forwards}
+.demo[data-s="2"] .slots-m .pk{animation:pickd .3s 1.8s forwards}
+@keyframes pickd{to{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}}
+@keyframes pickt{to{color:var(--on-accent)}}
+.in-m{border:1.5px solid var(--line);border-radius:12px;padding:7px 12px}
+.in-m small{display:block;font-size:.72rem;color:var(--muted)}
+.in-m div{height:1.45em;font-size:.95rem}
+.type{display:inline-block;clip-path:inset(0 100% 0 0)}
+.demo[data-s="3"] .t1{animation:type .9s steps(12) .5s forwards}
+.demo[data-s="3"] .t2{animation:type .9s steps(11) 1.6s forwards}
+@keyframes type{to{clip-path:inset(0 0 0 0)}}
+.chk-m{display:flex;gap:10px;align-items:center;font-size:.85rem;color:var(--muted)}
+.box{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--line);flex:none}
+.demo[data-s="3"] .box{animation:pickd .25s 2.7s forwards}
+.btn-m{margin-top:auto;text-align:center;border-radius:999px;padding:11px;background:linear-gradient(135deg,var(--accent-2),var(--accent));color:var(--on-accent);font-size:.9rem;font-weight:500}
+.demo[data-s="3"] .btn-m{animation:press .4s 3.2s}
+@keyframes press{50%{transform:scale(.95)}}
+.ok-m{align-self:center;width:64px;height:64px;margin-top:6px}
+.ok-m svg{width:100%;height:100%;fill:none;stroke:var(--accent-2);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.ok-m circle{fill:var(--tint);stroke-dasharray:151;stroke-dashoffset:151}
+.ok-m path{stroke-dasharray:36;stroke-dashoffset:36}
+.demo[data-s="4"] .ok-m circle{animation:draw .6s .1s forwards}
+.demo[data-s="4"] .ok-m path{animation:draw .4s .6s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.done-t{text-align:center;font-family:var(--display);font-size:1.35rem}
+.done-s{text-align:center;font-size:.82rem;color:var(--muted);margin-top:-4px}
+.wa{background:var(--tint);border-radius:4px 14px 14px 14px;padding:10px 12px;font-size:.82rem;line-height:1.45;align-self:flex-start;max-width:94%;margin-top:4px;opacity:0;transform:translateY(8px)}
+.wa b{display:block;font-size:.75rem;color:var(--accent);font-weight:600}
+.wa small{display:block;text-align:right;color:var(--muted);font-size:.7rem}
+.demo[data-s="4"] .wa{animation:rise .4s 1s forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.demo *,.demo *::after{animation-duration:0s!important;animation-delay:0s!important;transition:none!important}}
+footer{border-top:1px solid var(--line)}
+</style>
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="lotus" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="118 20" transform="rotate(115 24 24)"/>
+    <path d="M24 9c5 6.5 5.2 15 0 22c-5.2-7-5-15.5 0-22z" fill="#B08D57"/>
+    <path d="M24 31c-7.5-1-12.5-6.5-13.5-14c6.8.8 11.8 6 13.5 14z" fill="#B08D57" opacity=".85"/>
+    <path d="M24 31c7.5-1 12.5-6.5 13.5-14c-6.8.8-11.8 6-13.5 14z" fill="#B08D57" opacity=".85"/>
+    <path d="M13 35c6 3.4 16 3.4 22 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-test" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-9V3"/><path d="M7.5 15h9"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/></symbol>
+  <symbol id="i-cell" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="10" cy="10.5" r="2.2"/><circle cx="14.8" cy="13.8" r="1.5"/></symbol>
+  <symbol id="i-cells" viewBox="0 0 24 24"><circle cx="9" cy="10" r="4.5"/><circle cx="15" cy="14" r="4.5"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"/><path d="M10 5l2 2 2-2M10 19l2-2 2 2"/></symbol>
+  <symbol id="i-male" viewBox="0 0 24 24"><circle cx="10" cy="14" r="5.5"/><path d="M14 10l6-6M15 4h5v5"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.5-7.5-10.2A4.2 4.2 0 0 1 12 7.3a4.2 4.2 0 0 1 7.5 2.5C19.5 15.5 12 20 12 20z"/></symbol>
+  <symbol id="i-scan" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><path d="M8.5 12.5a3.5 3.5 0 0 1 7 0"/></symbol>
+  <symbol id="i-steth" viewBox="0 0 24 24"><path d="M6 3v6a5 5 0 0 0 10 0V3"/><path d="M11 14v2a4 4 0 0 0 8 0v-2.5"/><circle cx="19" cy="11.5" r="2"/></symbol>
+  <symbol id="i-lap" viewBox="0 0 24 24"><path d="M4 20L15.5 8.5"/><path d="M13.5 6.5l4 4"/><circle cx="19" cy="5" r="2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10c-3.5-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2.5"/><path d="M16 10.5l5-3v9l-5-3"/></symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></symbol>
+</svg>
+
+<div class="proto"><div class="wrap"><b>Prototype for review.</b> <span>Timings, fees, photos and registration numbers shown in <span class="ph" title="Placeholder">gold</span> are placeholders until the clinic confirms them.</span></div></div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#home" aria-label="Elaris home">
+      <svg style="color:var(--accent)"><use href="#lotus"/></svg>
+      <div><div class="word">ELARIS</div><div class="sub">Women &amp; Vision Centre</div></div>
+    </a>
+    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    <nav class="main" id="main-nav" aria-label="Main">
+      <a href="#treatments">Fertility &amp; IVF</a>
+      <a href="#ivf-journey">IVF Journey</a>
+      <a href="#womens-health">Women's Health</a>
+      <a href="#costs">Costs</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a class="btn small" href="#book">Book appointment</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HOME -->
+<div class="view" data-view="home">
+  <div class="hero">
+    <div class="wrap">
+      <div class="stack">
+        <span class="eyebrow">Fertility &amp; IVF care · Nagpur</span>
+        <h1>Fertility care in Nagpur, <em>from first tests to IVF.</em></h1>
+        <p class="lede">Dr. Purval Vaidya offers fertility evaluation, IUI and IVF alongside complete women's health care at Elaris, near Tata Square on Manewada-Besa Road.</p>
+        <div class="cta-row">
+          <a class="btn" href="#book">Book a consultation</a>
+          <a class="btn ghost" href="#ivf-journey">How IVF works</a>
+        </div>
+        <p class="phone-line">Prefer to talk first? Call <b>+91 84830 95406</b></p>
+      </div>
+      <div class="demo" id="demo" data-s="1" aria-label="Preview of the booking steps">
+        <div class="device">
+          <div class="dev-head"><svg class="dev-logo" aria-hidden="true"><use href="#lotus"/></svg><div><b>Book an appointment</b><span>Elaris Women &amp; Vision Centre</span></div></div>
+          <div class="prog" role="group" aria-label="Booking steps">
+            <button type="button" data-go="1"><i></i><span>Visit</span></button>
+            <button type="button" data-go="2"><i></i><span>Time</span></button>
+            <button type="button" data-go="3"><i></i><span>Details</span></button>
+            <button type="button" data-go="4"><i></i><span>Confirmed</span></button>
+          </div>
+          <div class="stage">
+            <div class="scene" data-n="1">
+              <p class="q">What is the visit for?</p>
+              <div class="opt-m o1"><span class="rad"></span><div><b>Fertility consultation</b><small>For couples trying to conceive</small></div></div>
+              <div class="opt-m"><span class="rad"></span><div><b>Pregnancy check-up</b><small>Antenatal visit or scan</small></div></div>
+              <div class="opt-m"><span class="rad"></span><div><b>Gynaecology consultation</b><small>Periods, PCOS, menopause</small></div></div>
+            </div>
+            <div class="scene" data-n="2">
+              <p class="q">Pick a day</p>
+              <div class="days-m" id="demo-days"><span>Mon<b>2</b></span><span class="pk">Tue<b>3</b></span><span>Wed<b>4</b></span><span>Thu<b>5</b></span><span>Fri<b>6</b></span></div>
+              <p class="q">Pick a time</p>
+              <div class="slots-m"><span class="x">10:00</span><span>10:20</span><span class="x">10:40</span><span class="pk">11:00</span><span>11:20</span><span class="x">11:40</span><span>5:00</span><span>5:20</span><span class="x">5:40</span></div>
+            </div>
+            <div class="scene" data-n="3">
+              <p class="q">Your details</p>
+              <div class="in-m"><small>Patient name</small><div><span class="type t1">Priya Sharma</span></div></div>
+              <div class="in-m"><small>Mobile number</small><div><span class="type t2">98765 43210</span></div></div>
+              <div class="chk-m"><span class="box"></span>Send confirmation on WhatsApp</div>
+              <div class="btn-m">Confirm appointment</div>
+            </div>
+            <div class="scene" data-n="4">
+              <div class="ok-m"><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-15"/></svg></div>
+              <p class="done-t">Appointment confirmed</p>
+              <p class="done-s"><span class="demo-date">Tue, 3 Nov</span> · 11:00 AM · Dr. Purval Vaidya</p>
+              <div class="wa"><b>Elaris</b>Hi Priya, your appointment at Elaris on <span class="demo-date">Tue, 3 Nov</span> at 11:00 AM is confirmed. Reply R to reschedule.<small>11:02 AM ✓✓</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <svg class="curve" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 100 L0 70 C420 70 760 64 1030 40 C1200 24 1320 6 1440 2 L1440 100 Z" fill="currentColor"/>
+    <path d="M0 62 C420 62 760 56 1030 32 C1200 16 1320 -2 1440 -6" fill="none" stroke="#B08D57" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+  </svg>
+  <section class="band" style="padding-top:24px">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Fertility treatments</span>
+        <h2>Care matched to where you are</h2>
+        <p class="lede">Most couples start with a simple evaluation. Many need only medication or IUI. IVF is there when it's the right step.</p>
+      </div>
+      <div class="grid g3">
+        <a class="tile" href="#treatments"><span class="ico"><svg><use href="#i-test"/></svg></span><span class="chip">Start here</span><h3>Fertility evaluation</h3><p>Tests for both partners to find out what's affecting conception.</p><span class="more">Learn more →</span></a>
+        <a class="tile" href="#treatments"><span class="ico"><svg><use href="#i-drop"/></svg></span><span class="chip">Treatment</span><h3>IUI</h3><p>Prepared sperm placed in the uterus at ovulation. A gentle first option for many couples.</p><span class="more">Learn more →</span></a>
+        <a class="tile" href="#treatments"><span class="ico"><svg><use href="#i-cell"/></svg></span><span class="chip">Treatment</span><h3>IVF &amp; ICSI</h3><p>Eggs fertilised in the lab and the embryo transferred to the uterus.</p><span class="more">Learn more →</span></a>
+        <a class="tile" href="#treatments"><span class="ico"><svg><use href="#i-cells"/></svg></span><span class="chip">Treatment</span><h3>Frozen embryo transfer</h3><p>Use embryos stored from an earlier IVF cycle.</p><span class="more">Learn more →</span></a>
+        <a class="tile" href="#treatments"><span class="ico"><svg><use href="#i-snow"/></svg></span><span class="chip">Preservation</span><h3>Egg &amp; embryo freezing</h3><p>Keep the option of a family later, for medical or personal reasons.</p><span class="more">Learn more →</span></a>
+        <a class="tile" href="#treatments"><span class="ico"><svg><use href="#i-male"/></svg></span><span class="chip">For men</span><h3>Male fertility</h3><p>Semen analysis and treatment. Male factors play a part in many cases.</p><span class="more">Learn more →</span></a>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="wrap split">
+      <div class="stack">
+        <span class="eyebrow">When to see a specialist</span>
+        <h2>Trying for a while without success?</h2>
+        <p class="lede">A fertility check-up is usually advised after 12 months of trying if you are under 35, or after 6 months if you are 35 or older.</p>
+        <p class="lede">See a specialist sooner if periods are irregular, you have PCOS or endometriosis, you've had pelvic surgery, or there's a known male factor.</p>
+        <div class="cta-row"><a class="btn" href="#book">Book a fertility consultation</a></div>
+      </div>
+      <div class="card">
+        <span class="chip">Your first visit</span>
+        <h3>What happens at the first consultation</h3>
+        <ul>
+          <li>A conversation about your history, cycles and any earlier treatment</li>
+          <li>A pelvic ultrasound if needed</li>
+          <li>A test plan for both partners, such as AMH, hormones and semen analysis</li>
+          <li>Clear next steps and an estimate of costs</li>
+        </ul>
+        <p style="margin-top:8px">Please bring any previous reports. Both partners are welcome.</p>
+      </div>
+    </div>
+  </section>
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Women's health</span><h2>Complete gynaecology and pregnancy care</h2></div>
+      <div class="grid g4">
+        <a class="card" href="#womens-health" style="text-decoration:none"><span class="ico"><svg><use href="#i-heart"/></svg></span><h3>Pregnancy care</h3><p>Antenatal check-ups through every trimester.</p></a>
+        <a class="card" href="#womens-health" style="text-decoration:none"><span class="ico"><svg><use href="#i-scan"/></svg></span><h3>Ultrasonography</h3><p>In-clinic scans for fertility and pregnancy.</p></a>
+        <a class="card" href="#womens-health" style="text-decoration:none"><span class="ico"><svg><use href="#i-steth"/></svg></span><h3>Gynaecology</h3><p>Periods, PCOS, infections and menopause.</p></a>
+        <a class="card" href="#womens-health" style="text-decoration:none"><span class="ico"><svg><use href="#i-lap"/></svg></span><h3>Laparoscopy</h3><p>Keyhole surgery for fibroids, cysts and endometriosis.</p></a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- TREATMENTS -->
+<div class="view" data-view="treatments" hidden>
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Fertility &amp; IVF</span><h1>Fertility treatments</h1><p class="lede">Every plan starts with testing both partners. The results decide the treatment, starting with the simplest option likely to help.</p></div>
+      <div class="grid g2">
+        <article class="card"><span class="chip">Start here</span><h3>Fertility evaluation</h3><p>Tests for the woman typically include an ultrasound, AMH and hormone tests, and a tube check (HSG). Men have a semen analysis.</p></article>
+        <article class="card"><span class="chip">Treatment</span><h3>Ovulation induction</h3><p>Tablets or injections to help regular ovulation, with scans to time intercourse. Often the first step for PCOS.</p></article>
+        <article class="card"><span class="chip">Treatment</span><h3>IUI (intrauterine insemination)</h3><p>Washed, concentrated sperm placed in the uterus around ovulation. A short, simple procedure in the clinic.</p></article>
+        <article class="card"><span class="chip">Treatment</span><h3>IVF (in vitro fertilisation)</h3><p>Eggs are collected after hormone stimulation, fertilised in the lab, and an embryo is transferred to the uterus. <a href="#ivf-journey">See each step</a>.</p></article>
+        <article class="card"><span class="chip">Treatment</span><h3>ICSI</h3><p>A single sperm is injected into each egg. Used when sperm count or movement is low, or after fertilisation problems in earlier IVF.</p></article>
+        <article class="card"><span class="chip">Treatment</span><h3>Frozen embryo transfer (FET)</h3><p>Embryos frozen in an earlier cycle are thawed and transferred, without repeating stimulation.</p></article>
+        <article class="card"><span class="chip">Preservation</span><h3>Egg &amp; embryo freezing</h3><p>For women who want to delay pregnancy, or before treatments such as chemotherapy that can affect fertility.</p></article>
+        <article class="card"><span class="chip">Surgery</span><h3>Fertility-enhancing surgery</h3><p>Laparoscopy and hysteroscopy to treat endometriosis, fibroids, polyps or blocked tubes.</p></article>
+      </div>
+      <p class="note" style="margin-top:20px">Prototype note: the clinic confirms which of these it offers, whether the IVF lab is on-site, and its <span class="ph" title="Placeholder">ART registration level</span>.</p>
+    </div>
+  </section>
+  <section class="band">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Conditions</span><h2>Common causes we evaluate and treat</h2></div>
+      <div class="grid g3">
+        <div class="tile"><h3>PCOS</h3><p>Irregular or absent ovulation, often treated first with lifestyle changes and ovulation induction.</p></div>
+        <div class="tile"><h3>Endometriosis</h3><p>Painful periods and reduced fertility, managed with medicines, surgery or IVF.</p></div>
+        <div class="tile"><h3>Low ovarian reserve</h3><p>A low AMH or egg count. Timely treatment matters most here.</p></div>
+        <div class="tile"><h3>Blocked tubes</h3><p>Found on HSG or laparoscopy. IVF bypasses the tubes.</p></div>
+        <div class="tile"><h3>Male factor</h3><p>Low count, movement or shape of sperm, often treated with IUI or ICSI.</p></div>
+        <div class="tile"><h3>Unexplained infertility</h3><p>Normal test results but no pregnancy. Usually a stepwise plan from IUI to IVF.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- IVF JOURNEY -->
+<div class="view" data-view="ivf-journey" hidden>
+  <section>
+    <div class="wrap split">
+      <div class="stack" style="gap:18px">
+        <span class="eyebrow">Your IVF journey</span>
+        <h1>How an IVF cycle works, step by step</h1>
+        <p class="lede">From the start of injections to the pregnancy test usually takes about four to six weeks. Your own plan may differ, and Dr. Vaidya will explain each stage before it begins.</p>
+        <div class="tl-wrap">
+          <div class="timeline" aria-label="Typical IVF timeline">
+            <div style="flex:10"><b>Days 1–12</b>Stimulation</div>
+            <div style="flex:2"><b>Day ~13</b>Trigger</div>
+            <div style="flex:2"><b>Day ~15</b>Egg retrieval</div>
+            <div style="flex:5"><b>Days 15–20</b>Embryo culture</div>
+            <div style="flex:14"><b>~14 days later</b>Pregnancy test</div>
+          </div>
+        </div>
+        <div class="cta-row" style="margin-top:8px"><a class="btn" href="#book">Book a consultation</a><a class="btn ghost" href="#costs">See costs</a></div>
+      </div>
+      <ol class="steps">
+        <li><div><span class="dur">1–2 visits</span><h3>Consultation and tests</h3><p>History, ultrasound, AMH and hormone tests, and semen analysis decide whether IVF is right and which protocol to use.</p></div></li>
+        <li><div><span class="dur">About 10–12 days</span><h3>Ovarian stimulation</h3><p>Daily hormone injections help several eggs mature. Three to five monitoring scans track how the follicles grow.</p></div></li>
+        <li><div><span class="dur">36 hours before retrieval</span><h3>Trigger injection</h3><p>A final injection prepares the eggs for collection. Timing is exact, so the clinic sets the hour.</p></div></li>
+        <li><div><span class="dur">15–20 minutes, same-day discharge</span><h3>Egg retrieval</h3><p>Eggs are collected through a fine needle under ultrasound guidance, with sedation so you are comfortable.</p></div></li>
+        <li><div><span class="dur">3–5 days in the lab</span><h3>Fertilisation and embryo culture</h3><p>Eggs are fertilised by conventional IVF or ICSI. Embryos grow in the lab, and extra good-quality embryos can be frozen.</p></div></li>
+        <li><div><span class="dur">A few minutes, no anaesthesia</span><h3>Embryo transfer</h3><p>A thin catheter places the embryo in the uterus. Most women go back to light routine the same day.</p></div></li>
+        <li><div><span class="dur">About 14 days after transfer</span><h3>Pregnancy test</h3><p>A beta-hCG blood test confirms the result. If positive, the first scan follows two to three weeks later.</p></div></li>
+      </ol>
+    </div>
+  </section>
+</div>
+
+<!-- WOMEN'S HEALTH -->
+<div class="view" data-view="womens-health" hidden>
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Women's health</span><h1>Gynaecology and pregnancy care</h1><p class="lede">Care through every stage, from first periods and family planning to pregnancy and menopause.</p></div>
+      <div class="grid g3">
+        <article class="card"><h3>Antenatal care &amp; pregnancy check-ups</h3><p>Regular check-ups, scans and tests through all three trimesters, with guidance on diet, medicines and warning signs.</p></article>
+        <article class="card"><h3>Ultrasonography</h3><p>Pelvic, follicular and pregnancy scans done in the clinic.</p><p class="note" style="margin-top:6px">Sex determination of the foetus is not done at this clinic. It is a punishable offence under the PC-PNDT Act, 1994.</p></article>
+        <article class="card"><h3>Gynaecological consultation</h3><p>Irregular or heavy periods, PCOS, white discharge, infections, pelvic pain and menopause concerns.</p></article>
+        <article class="card"><h3>Laparoscopy</h3><p>Keyhole surgery for ovarian cysts, fibroids, endometriosis and tube problems, usually with a quicker recovery than open surgery.</p></article>
+        <article class="card"><h3>Family planning &amp; contraception</h3><p>Advice on pills, Copper-T and other options, so you can plan pregnancy when you are ready.</p></article>
+        <article class="card"><h3>PCOS &amp; hormone care</h3><p>Diagnosis and long-term management of PCOS, thyroid-related cycle problems and weight-related hormone issues.</p></article>
+      </div>
+      <div class="cta-row" style="margin-top:28px"><a class="btn" href="#book">Book a consultation</a></div>
+    </div>
+  </section>
+</div>
+
+<!-- COSTS -->
+<div class="view" data-view="costs" hidden>
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Costs &amp; financing</span><h1>What treatment costs</h1><p class="lede">You get a written estimate after your first consultation, before any treatment starts. These are starting prices to help you plan.</p></div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Service</th><th>What's included</th><th>Starting from</th></tr></thead>
+          <tbody>
+            <tr><td>Fertility consultation</td><td>Doctor's consultation and review of past reports</td><td class="num"><span class="ph" title="Placeholder">₹ ___</span></td></tr>
+            <tr><td>Basic fertility tests</td><td>Ultrasound, AMH, hormones, semen analysis</td><td class="num"><span class="ph" title="Placeholder">₹ ___</span></td></tr>
+            <tr><td>IUI cycle</td><td>Monitoring scans, sperm preparation, insemination</td><td class="num"><span class="ph" title="Placeholder">₹ ___</span></td></tr>
+            <tr><td>IVF cycle</td><td>Monitoring, egg retrieval, lab, embryo transfer (medicines extra)</td><td class="num"><span class="ph" title="Placeholder">₹ ___</span></td></tr>
+            <tr><td>ICSI</td><td>Added to an IVF cycle when needed</td><td class="num"><span class="ph" title="Placeholder">₹ ___</span></td></tr>
+            <tr><td>Frozen embryo transfer</td><td>Preparation, thawing and transfer</td><td class="num"><span class="ph" title="Placeholder">₹ ___</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid g2" style="margin-top:22px">
+        <div class="card"><h3>What changes the cost</h3><ul><li>Medicine doses, which depend on age and ovarian reserve</li><li>Whether ICSI is needed</li><li>Embryo freezing and storage</li><li>The number of cycles</li></ul></div>
+        <div class="card"><h3>Paying for treatment</h3><p>Ask about <span class="ph" title="Placeholder">EMI options</span> at the clinic. Cash, UPI and cards are accepted.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ABOUT -->
+<div class="view" data-view="about" hidden>
+  <section>
+    <div class="wrap split">
+      <div class="portrait" style="justify-self:start">
+        <div class="ring"><img src="doctor.jpg" alt="Dr. Purval Vaidya" width="640" height="640"></div>
+      </div>
+      <div class="stack" style="gap:18px">
+        <span class="eyebrow">About the doctor</span>
+        <h1>Dr. Purval Vaidya</h1>
+        <p style="font-weight:500">MBBS, DGO, DNB (OBGY) · Obstetrics, Gynaecology &amp; Fertility</p>
+        <p class="lede">Dr. Vaidya leads fertility and women's health care at Elaris, from first evaluations and IUI to IVF, pregnancy care and laparoscopic surgery.</p>
+        <dl class="hours">
+          <dt>Training</dt><dd><span class="ph" title="Placeholder">To be added by clinic</span></dd>
+          <dt>Experience</dt><dd><span class="ph" title="Placeholder">To be added by clinic</span></dd>
+          <dt>Languages</dt><dd><span class="ph" title="Placeholder">English, Hindi, Marathi</span></dd>
+          <dt>Reg. No.</dt><dd><span class="ph" title="Placeholder">MMC ______</span></dd>
+        </dl>
+        <div class="cta-row"><a class="btn" href="#book">Book with Dr. Vaidya</a></div>
+      </div>
+    </div>
+  </section>
+  <section class="band">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">The clinic</span><h2>Elaris Women &amp; Vision Centre</h2><p class="lede">The name holds a simple idea: every family starts as a vision. The clinic is near Tata Square on Manewada-Besa Road, Nagpur.</p></div>
+      <div class="grid g3">
+        <div class="photo-ph" style="background:repeating-linear-gradient(135deg,var(--band-2) 0 12px,var(--band) 12px 24px);border-color:var(--band-2);color:var(--on-band-muted)">Clinic photo: entrance</div>
+        <div class="photo-ph" style="background:repeating-linear-gradient(135deg,var(--band-2) 0 12px,var(--band) 12px 24px);border-color:var(--band-2);color:var(--on-band-muted)">Clinic photo: waiting area</div>
+        <div class="photo-ph" style="background:repeating-linear-gradient(135deg,var(--band-2) 0 12px,var(--band) 12px 24px);border-color:var(--band-2);color:var(--on-band-muted)">Clinic photo: ultrasound room</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FAQ -->
+<div class="view" data-view="faq" hidden>
+  <section>
+    <div class="wrap" style="max-width:860px">
+      <div class="sec-head"><span class="eyebrow">Questions</span><h1>Frequently asked questions</h1></div>
+      <details open><summary>When should we see a fertility specialist?</summary><p>After 12 months of trying if the woman is under 35, or after 6 months if she is 35 or older. Come sooner with irregular periods, PCOS, endometriosis, past pelvic surgery or a known sperm problem.</p></details>
+      <details><summary>Do both partners need to come to the first visit?</summary><p>It helps. Male factors contribute in many cases, and a semen analysis is part of the basic evaluation. If one partner can't come, the first visit can still go ahead.</p></details>
+      <details><summary>What is the difference between IUI and IVF?</summary><p>In IUI, sperm is placed in the uterus and fertilisation happens naturally inside the body. In IVF, eggs are collected and fertilised in the lab, and an embryo is placed in the uterus.</p></details>
+      <details><summary>Is IVF painful?</summary><p>The daily injections are small and most women manage them easily. Egg retrieval is done under sedation. Embryo transfer feels similar to a routine internal examination.</p></details>
+      <details><summary>How many clinic visits does an IVF cycle need?</summary><p>Usually three to five monitoring scans during stimulation, then egg retrieval, embryo transfer and a blood test. Some consultations can be done by video.</p></details>
+      <details><summary>Will my visit be kept private?</summary><p>Yes. Appointment messages only say you have an appointment at Elaris, never the reason. Your reports are seen only by your care team.</p></details>
+      <details><summary>Can I consult by video?</summary><p>Yes, for a first fertility consultation, a gynaecology consultation or a review of reports. Scans and procedures need a clinic visit.</p></details>
+      <details><summary>Do you tell the sex of the baby during a scan?</summary><p>No. Sex determination of the foetus is prohibited under the PC-PNDT Act, 1994, and is not done at Elaris.</p></details>
+      <details><summary>How much does IVF cost?</summary><p>It depends on medicine doses, ICSI and freezing. See the <a href="#costs">costs page</a> for starting prices. You receive a written estimate before treatment begins.</p></details>
+    </div>
+  </section>
+</div>
+
+<!-- CONTACT -->
+<div class="view" data-view="contact" hidden>
+  <section>
+    <div class="wrap split">
+      <div class="stack" style="gap:20px">
+        <span class="eyebrow">Visit us</span>
+        <h1>Contact &amp; location</h1>
+        <div class="stack" style="gap:6px">
+          <p style="font-weight:500">Elaris Women &amp; Vision Centre</p>
+          <p class="lede">101, Yadnyabhaskar Apartment, Tata Square, Manewada-Besa Road, Nagpur, Maharashtra 440027</p>
+          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Yadnyabhaskar+Apartment+Tata+Square+Manewada+Besa+Road+Nagpur" target="_blank" rel="noopener">Open in Google Maps ↗</a></p>
+        </div>
+        <div class="card" style="gap:12px">
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between">
+            <div><span class="chip">Phone &amp; WhatsApp</span><p style="font-size:1.25rem;color:var(--ink);font-variant-numeric:tabular-nums" id="phone-text">+91 84830 95406</p></div>
+            <button class="btn small ghost" id="copy-phone" type="button">Copy number</button>
+          </div>
+          <div><span class="chip">Email</span><p style="color:var(--ink)">drpurvalvaidya@gmail.com</p></div>
+        </div>
+      </div>
+      <div class="card" style="gap:14px">
+        <h3>Clinic hours</h3>
+        <dl class="hours">
+          <dt>Mon – Sat</dt><dd><span class="ph" title="Placeholder">10:00 am – 2:00 pm</span></dd>
+          <dt></dt><dd><span class="ph" title="Placeholder">5:00 pm – 8:00 pm</span></dd>
+          <dt>Sunday</dt><dd>Closed</dd>
+        </dl>
+        <p class="note">For urgent pregnancy concerns outside clinic hours, call the clinic number. In an emergency, go to the nearest hospital.</p>
+        <a class="btn" href="#book">Book an appointment</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- BOOK -->
+<div class="view" data-view="book" hidden>
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Appointments</span><h1>Book an appointment</h1><p class="lede">Choose a visit, pick a time, and you'll get a confirmation on WhatsApp or SMS.</p></div>
+      <div id="booker"></div>
+    </div>
+  </section>
+</div>
+
+<!-- CLINIC DESK -->
+<div class="view" data-view="clinic-desk" hidden>
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Demo · staff view</span><h1>Clinic desk</h1><p class="lede">What the receptionist or doctor sees. Bookings made in this prototype appear here alongside sample appointments.</p></div>
+      <div id="desk"></div>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<section class="cta-band" id="cta-band">
+  <div class="wrap">
+    <div class="cta-box">
+      <svg class="wm" aria-hidden="true"><use href="#lotus"/></svg>
+      <div><h2>Ready to talk to a specialist?</h2><p>Book a private consultation with Dr. Purval Vaidya, at the clinic or by video.</p></div>
+      <div class="cta-row"><a class="btn" href="#book">Book a consultation</a><a class="btn ghost" href="#contact">Call the clinic</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div class="stack">
+        <a class="brand inv" href="#home"><svg style="color:var(--on-band)"><use href="#lotus"/></svg><div><div class="word">ELARIS</div><div class="sub">Women &amp; Vision Centre</div></div></a>
+        <p class="muted">101, Yadnyabhaskar Apartment, Tata Square, Manewada-Besa Road, Nagpur 440027</p>
+        <p class="muted">+91 84830 95406 · drpurvalvaidya@gmail.com</p>
+      </div>
+      <div><h4>Care</h4><ul><li><a href="#treatments">Fertility &amp; IVF</a></li><li><a href="#ivf-journey">IVF journey</a></li><li><a href="#womens-health">Women's health</a></li><li><a href="#costs">Costs</a></li></ul></div>
+      <div><h4>Clinic</h4><ul><li><a href="#about">About Dr. Vaidya</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li><li><a href="#book">Book appointment</a></li><li><a href="#clinic-desk">Clinic desk (demo)</a></li></ul></div>
+    </div>
+    <div class="legal">
+      <p>Sex determination of the foetus is not done here. It is a punishable offence under the PC-PNDT Act, 1994.</p>
+      <p>ART Reg. No. <span class="ph" title="Placeholder">________</span> · PC-PNDT Reg. No. <span class="ph" title="Placeholder">________</span></p>
+      <div class="row"><span>© <span id="yr"></span> Elaris Women &amp; Vision Centre</span><span class="credit">Website by <b>Cleveress Marketing</b></span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  $('#yr').textContent=new Date().getFullYear();
+
+  /* ---------- routing ---------- */
+  const views=$$('[data-view]'), names=views.map(v=>v.dataset.view);
+  const nav=$('#main-nav'), menuBtn=$('#menu-btn');
+  function route(){
+    let h=location.hash.slice(1); if(!names.includes(h)) h='home';
+    views.forEach(v=>v.hidden=v.dataset.view!==h);
+    $('#cta-band').hidden=(h==='book'||h==='clinic-desk');
+    $$('a',nav).forEach(a=>{ if(a.getAttribute('href')==='#'+h) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
+    nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false');
+    if(h==='book') renderBooker();
+    if(h==='clinic-desk') renderDesk();
+    window.scrollTo(0,0);
+  }
+  menuBtn.addEventListener('click',()=>{const o=nav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(o));});
+  window.addEventListener('hashchange',route);
+
+  $('#copy-phone').addEventListener('click',e=>{
+    const b=e.currentTarget, t='+91 84830 95406';
+    const done=()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy number',1600);};
+    try{navigator.clipboard.writeText(t).then(done,()=>selectPhone());}catch(_){selectPhone();}
+    function selectPhone(){const r=document.createRange();r.selectNodeContents($('#phone-text'));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected, press Ctrl+C';}
+  });
+
+  /* ---------- shared prototype state ---------- */
+  const KEY='elaris-proto-v1';
+  let store={bookings:[],blocked:[],status:{}};
+  try{const raw=localStorage.getItem(KEY); if(raw) store=Object.assign(store,JSON.parse(raw));}catch(_){}
+  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(store));}catch(_){}};
+
+  const VISITS={
+    fert:{name:'Fertility consultation',desc:'First visit for couples trying to conceive',video:true,couple:true},
+    follow:{name:'Treatment follow-up',desc:'IUI/IVF review or monitoring scan',video:false},
+    preg:{name:'Pregnancy check-up',desc:'Antenatal visit or pregnancy scan',video:false},
+    gyn:{name:'Gynaecology consultation',desc:'Periods, PCOS, infections, menopause',video:true}
+  };
+  const dkey=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  const fromKey=k=>{const [y,m,d]=k.split('-').map(Number);return new Date(y,m-1,d);};
+  const fmtDay=d=>d.toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'});
+  const fmtLong=d=>d.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long'});
+  const fmtTime=m=>{let h=Math.floor(m/60),mm=m%60,ap=h>=12?'PM':'AM';h=h%12||12;return h+':'+String(mm).padStart(2,'0')+' '+ap;};
+  const hash=s=>{let h=2166136261;for(const c of s){h^=c.charCodeAt(0);h=Math.imul(h,16777619);}return (h>>>0)%100;};
+  function nextDays(n){const out=[],t=new Date();t.setHours(0,0,0,0);for(let i=0;i<n;i++){const d=new Date(t);d.setDate(t.getDate()+i);out.push(d);}return out;}
+  const isClosed=d=>d.getDay()===0;
+  const isBlocked=k=>store.blocked.includes(k);
+  function slotsFor(d){
+    if(isClosed(d)) return [];
+    const k=dkey(d), now=new Date(), out=[];
+    const add=(start,end,session)=>{for(let m=start;m<end;m+=20){
+      const past=k===dkey(now)&&m<=now.getHours()*60+now.getMinutes()+30;
+      const taken=hash(k+':'+m)<28||store.bookings.some(b=>b.date===k&&b.time===m&&effStatus(b)!=='cancelled');
+      out.push({m,session,ok:!past&&!taken});}};
+    add(600,840,'Morning'); add(1020,1200,'Evening');
+    return out;
+  }
+  const effStatus=b=>store.status[b.id]||b.status;
+
+  /* ---------- booking flow ---------- */
+  const B={step:1,visit:'fert',mode:'clinic',date:null,time:null,f:{name:'',phone:'',age:'',email:'',partner:'',trying:'',prev:'',notes:'',channel:'whatsapp',consent:false},files:[],done:null,errors:{}};
+  const STEPS=['Visit','Date & time','Your details','Confirm'];
+
+  function renderBooker(){
+    const root=$('#booker');
+    if(B.done){root.innerHTML=doneView();bindDone();return;}
+    root.innerHTML=`<div class="book-shell"><div><ol class="stepper">${STEPS.map((s,i)=>`<li class="${i+1===B.step?'on':i+1<B.step?'done':''}">${i+1}. ${s}</li>`).join('')}</ol><div class="panel" id="panel">${[stepVisit,stepDate,stepDetails,stepReview][B.step-1]()}</div></div>${summary()}</div>`;
+    bindStep();
+  }
+  function summary(){
+    const v=VISITS[B.visit];
+    return `<aside class="card summary"><span class="chip">Your appointment</span><dl>
+      <dt>Visit</dt><dd>${esc(v.name)}</dd>
+      <dt>Where</dt><dd>${B.mode==='video'?'Video consultation':'At the clinic'}</dd>
+      <dt>Date</dt><dd>${B.date?esc(fmtDay(fromKey(B.date))):'—'}</dd>
+      <dt>Time</dt><dd>${B.time!=null?fmtTime(B.time):'—'}</dd>
+      <dt>Doctor</dt><dd>Dr. Purval Vaidya</dd></dl>
+      <p class="note">Fee: <span class="ph" title="Placeholder">₹ ___</span>, paid at the clinic.</p></aside>`;
+  }
+  function stepVisit(){
+    const v=VISITS[B.visit];
+    return `<div class="stack"><h3>What is the visit for?</h3><div class="opts">${Object.entries(VISITS).map(([k,o])=>`
+      <div class="opt"><input type="radio" name="visit" id="visit-${k}" value="${k}" ${k===B.visit?'checked':''}><label for="visit-${k}"><b>${o.name}</b><span>${o.desc}</span></label></div>`).join('')}</div></div>
+      <div class="stack"><h3>How would you like to consult?</h3><div class="opts">
+        <div class="opt"><input type="radio" name="mode" id="mode-clinic" value="clinic" ${B.mode==='clinic'?'checked':''}><label for="mode-clinic"><b>At the clinic</b><span>Tata Square, Manewada-Besa Road</span></label></div>
+        <div class="opt"><input type="radio" name="mode" id="mode-video" value="video" ${B.mode==='video'?'checked':''} ${v.video?'':'disabled'}><label for="mode-video"><b>Video consultation</b><span>${v.video?'Link sent on WhatsApp before the call':'Needs an in-clinic visit'}</span></label></div>
+      </div></div>
+      <div class="actions"><span></span><button class="btn" id="next">Choose date &amp; time</button></div>`;
+  }
+  function stepDate(){
+    const days=nextDays(14);
+    if(!B.date){const first=days.find(d=>!isClosed(d)&&!isBlocked(dkey(d))&&slotsFor(d).some(s=>s.ok)); B.date=first?dkey(first):null;}
+    const d=B.date?fromKey(B.date):null, slots=d?slotsFor(d):[];
+    const groups=['Morning','Evening'].map(g=>{const ss=slots.filter(s=>s.session===g);return ss.length?`<div class="slot-group"><h4>${g}</h4><div class="slots">${ss.map(s=>`<button type="button" class="slot ${B.time===s.m?'on':''}" data-m="${s.m}" ${s.ok?'':'disabled'} aria-pressed="${B.time===s.m}">${fmtTime(s.m)}</button>`).join('')}</div></div>`:'';}).join('');
+    return `<div class="stack"><h3>Pick a day</h3><div class="days" role="group" aria-label="Days">${days.map(x=>{const k=dkey(x),off=isClosed(x)||isBlocked(k);return `<button type="button" class="day ${k===B.date?'on':''}" data-k="${k}" ${off?'disabled':''} title="${isClosed(x)?'Closed on Sundays':isBlocked(k)?'Doctor unavailable':''}"><small>${x.toLocaleDateString('en-IN',{weekday:'short'})}</small><b>${x.getDate()}</b><small>${x.toLocaleDateString('en-IN',{month:'short'})}</small></button>`;}).join('')}</div></div>
+      <div class="stack"><h3>${d?esc(fmtLong(d)):'No days available'}</h3>${groups||'<p class="note">No free slots on this day. Please pick another day.</p>'}<p class="hint" style="font-size:.82rem;color:var(--muted)">Slots are 20 minutes. Crossed-out times are already booked.</p></div>
+      <div class="actions"><button class="btn ghost" id="back">Back</button><button class="btn" id="next" ${B.time==null?'disabled':''}>Continue</button></div>`;
+  }
+  function fld(id,label,type,opts={}){
+    const val=esc(B.f[id]), err=B.errors[id];
+    const input=type==='select'?`<select id="f-${id}" data-f="${id}">${opts.options.map(o=>`<option value="${esc(o[0])}" ${B.f[id]===o[0]?'selected':''}>${esc(o[1])}</option>`).join('')}</select>`
+      :type==='textarea'?`<textarea id="f-${id}" data-f="${id}" rows="3" placeholder="${esc(opts.ph||'')}">${val}</textarea>`
+      :`<input id="f-${id}" data-f="${id}" type="${type}" value="${val}" ${opts.attrs||''} placeholder="${esc(opts.ph||'')}">`;
+    return `<div class="field ${opts.full?'full':''} ${err?'bad':''}"><label for="f-${id}">${label}</label>${input}${err?`<span class="err">${err}</span>`:opts.hint?`<span class="hint">${opts.hint}</span>`:''}</div>`;
+  }
+  function stepDetails(){
+    const v=VISITS[B.visit];
+    return `<div class="fields">
+      ${fld('name','Patient name','text',{attrs:'autocomplete="name"',ph:'Full name'})}
+      ${fld('phone','Mobile number','tel',{attrs:'inputmode="numeric" autocomplete="tel" maxlength="10"',ph:'10-digit mobile',hint:'Used for your confirmation'})}
+      ${fld('age','Age','number',{attrs:'min="16" max="70" inputmode="numeric"'})}
+      ${fld('email','Email (optional)','email',{attrs:'autocomplete="email"'})}
+      ${v.couple?`<div class="subhead">About your fertility history</div>
+      ${fld('partner',"Partner's name (optional)",'text')}
+      ${fld('trying','How long have you been trying?','select',{options:[['','Select'],['<1','Less than 1 year'],['1-2','1–2 years'],['2-5','2–5 years'],['5+','More than 5 years']]})}
+      ${fld('prev','Any previous treatment?','select',{options:[['','Select'],['none','None'],['meds','Tablets or injections'],['iui','IUI'],['ivf','IVF / ICSI']],full:false})}
+      <div class="field"><label for="f-files">Previous reports (optional)</label><input id="f-files" type="file" multiple accept=".pdf,image/*"><span class="hint">${B.files.length?esc(B.files.join(', ')):'AMH, semen analysis, HSG, scans'}</span></div>`:''}
+      ${fld('notes','Anything the doctor should know? (optional)','textarea',{full:true,ph:'You can leave this blank'})}
+      <div class="field full"><span style="font-size:.88rem;font-weight:500">Send my confirmation by</span><div class="opts">
+        <div class="opt"><input type="radio" name="channel" id="ch-wa" value="whatsapp" ${B.f.channel==='whatsapp'?'checked':''}><label for="ch-wa"><b>WhatsApp</b></label></div>
+        <div class="opt"><input type="radio" name="channel" id="ch-sms" value="sms" ${B.f.channel==='sms'?'checked':''}><label for="ch-sms"><b>SMS</b></label></div></div></div>
+      <label class="check field full ${B.errors.consent?'bad':''}"><input type="checkbox" id="f-consent" ${B.f.consent?'checked':''}><span>I agree that Elaris may store these details to manage my care, as described in the privacy policy. Messages will not mention the reason for my visit.${B.errors.consent?`<br><span class="err">${B.errors.consent}</span>`:''}</span></label>
+    </div>
+    <div class="actions"><button class="btn ghost" id="back">Back</button><button class="btn" id="next">Review booking</button></div>`;
+  }
+  function stepReview(){
+    const v=VISITS[B.visit], d=fromKey(B.date);
+    const rows=[['Visit',v.name],['Where',B.mode==='video'?'Video consultation':'At the clinic'],['When',fmtLong(d)+', '+fmtTime(B.time)],['Patient',B.f.name+(B.f.age?' · '+B.f.age+' yrs':'')],['Mobile','+91 '+B.f.phone],['Confirmation by',B.f.channel==='whatsapp'?'WhatsApp':'SMS']];
+    if(v.couple&&B.f.partner) rows.splice(4,0,['Partner',B.f.partner]);
+    if(B.files.length) rows.push(['Reports',B.files.length+' file(s) attached']);
+    return `<div class="stack"><h3>Check your details</h3><div class="summary" style="position:static"><dl>${rows.map(r=>`<dt>${r[0]}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl></div>
+      <p class="note">You can reschedule or cancel by replying to your confirmation message, up to <span class="ph" title="Placeholder">4 hours</span> before the appointment.</p></div>
+      <div class="actions"><button class="btn ghost" id="back">Back</button><button class="btn" id="next">Confirm appointment</button></div>`;
+  }
+  function validate(){
+    const e={}, f=B.f;
+    if(f.name.trim().length<2) e.name='Enter the patient’s full name.';
+    if(!/^[6-9]\d{9}$/.test(f.phone.trim())) e.phone='Enter a 10-digit mobile number starting with 6, 7, 8 or 9.';
+    const a=Number(f.age); if(!f.age||a<16||a>70) e.age='Enter an age between 16 and 70.';
+    if(f.email&&!/^\S+@\S+\.\S+$/.test(f.email)) e.email='Check the email address, or leave it blank.';
+    if(!f.consent) e.consent='Please agree so the clinic can store your booking.';
+    B.errors=e; return !Object.keys(e).length;
+  }
+  function bindStep(){
+    const p=$('#panel');
+    $$('input[name=visit]',p).forEach(r=>r.addEventListener('change',()=>{B.visit=r.value;if(!VISITS[B.visit].video)B.mode='clinic';renderBooker();}));
+    $$('input[name=mode]',p).forEach(r=>r.addEventListener('change',()=>{B.mode=r.value;renderBooker();}));
+    $$('.day',p).forEach(b=>b.addEventListener('click',()=>{B.date=b.dataset.k;B.time=null;renderBooker();}));
+    $$('.slot',p).forEach(b=>b.addEventListener('click',()=>{B.time=Number(b.dataset.m);renderBooker();$('#next')?.focus();}));
+    $$('[data-f]',p).forEach(i=>i.addEventListener('input',()=>{B.f[i.dataset.f]=i.value;}));
+    $$('input[name=channel]',p).forEach(r=>r.addEventListener('change',()=>B.f.channel=r.value));
+    const c=$('#f-consent',p); if(c) c.addEventListener('change',()=>B.f.consent=c.checked);
+    const fi=$('#f-files',p); if(fi) fi.addEventListener('change',()=>{B.files=[...fi.files].map(x=>x.name);fi.nextElementSibling.textContent=B.files.join(', ')||'AMH, semen analysis, HSG, scans';});
+    $('#back',p)?.addEventListener('click',()=>{B.step--;renderBooker();});
+    $('#next',p)?.addEventListener('click',()=>{
+      if(B.step===3&&!validate()){renderBooker();const first=$('.field.bad input, .field.bad select');first?.focus();return;}
+      if(B.step===4){confirmBooking();return;}
+      B.step++;renderBooker();$('#booker').scrollIntoView({block:'start'});
+    });
+  }
+  function confirmBooking(){
+    const id='ELR-'+String(Date.now()).slice(-5);
+    const b={id,visit:B.visit,mode:B.mode,date:B.date,time:B.time,name:B.f.name.trim(),partner:B.f.partner.trim(),phone:B.f.phone,channel:B.f.channel,status:'pending',files:B.files.length};
+    store.bookings.push(b); save(); B.done=b; renderBooker(); $('#booker').scrollIntoView({block:'start'});
+  }
+  function doneView(){
+    const b=B.done, d=fromKey(b.date), first=b.name.split(' ')[0];
+    return `<div class="panel" style="max-width:720px">
+      <span class="chip">Request received</span>
+      <h2>Thank you, ${esc(first)}.</h2>
+      <p class="lede">Your appointment request for <b>${esc(fmtLong(d))} at ${fmtTime(b.time)}</b> has been sent to the clinic. Reference <span class="ref">${b.id}</span>.</p>
+      <div class="stack" style="gap:8px"><span style="font-size:.88rem;font-weight:500">The ${b.channel==='whatsapp'?'WhatsApp':'SMS'} message you'll receive</span>
+        <div class="bubble">Hi ${esc(first)}, your appointment at Elaris on ${esc(fmtDay(d))} at ${fmtTime(b.time)} is confirmed.${b.mode==='video'?' Your video link will be sent 15 minutes before.':' Address: Tata Square, Manewada-Besa Road.'} Reply R to reschedule or C to cancel.<small>Elaris · +91 84830 95406</small></div>
+        <p class="hint" style="font-size:.82rem;color:var(--muted)">The message never mentions the reason for the visit.</p></div>
+      ${b.visit==='fert'?`<div class="card"><h3>Please bring</h3><ul><li>Any previous reports and scans</li><li>Your partner, if possible</li><li>A list of current medicines</li></ul></div>`:''}
+      <p class="note">Prototype: nothing was sent and no real booking was made. The request appears on the <a href="#clinic-desk">clinic desk</a> in this browser only.</p>
+      <div class="actions"><a class="btn ghost" href="#clinic-desk">See it on the clinic desk</a><button class="btn" id="again">Book another</button></div></div>`;
+  }
+  function bindDone(){$('#again').addEventListener('click',()=>{Object.assign(B,{step:1,date:null,time:null,done:null,files:[],errors:{}});B.f={name:'',phone:'',age:'',email:'',partner:'',trying:'',prev:'',notes:'',channel:'whatsapp',consent:false};renderBooker();});}
+
+  /* ---------- clinic desk ---------- */
+  function samples(){
+    const days=nextDays(10).filter(d=>!isClosed(d)), out=[];
+    const people=[['Sneha K.','fert','clinic','confirmed'],['Aarti & Rohan M.','fert','video','pending'],['Pooja D.','preg','clinic','confirmed'],['Kavita S.','follow','clinic','confirmed'],['Neha & Amit P.','fert','clinic','pending'],['Rashmi T.','gyn','clinic','confirmed'],['Manisha W.','preg','clinic','confirmed'],['Priya & Sagar B.','follow','clinic','pending']];
+    const times=[620,660,700,760,1040,1080,1120,1160];
+    people.forEach((p,i)=>{const d=days[i%Math.min(3,days.length)];out.push({id:'S-'+i,name:p[0],visit:p[1],mode:p[2],status:p[3],date:dkey(d),time:times[i],sample:true});});
+    return out;
+  }
+  let deskDay=null;
+  function renderDesk(){
+    const all=[...samples(),...store.bookings].sort((a,b)=>a.date.localeCompare(b.date)||a.time-b.time);
+    const dayKeys=[...new Set(all.map(b=>b.date))].sort();
+    if(!deskDay||!dayKeys.includes(deskDay)) deskDay=dayKeys[0];
+    const list=all.filter(b=>b.date===deskDay);
+    const active=list.filter(b=>effStatus(b)!=='cancelled');
+    const pend=all.filter(b=>effStatus(b)==='pending').length;
+    const vid=active.filter(b=>b.mode==='video').length;
+    const label={confirmed:'Confirmed',pending:'Awaiting confirmation',arrived:'Arrived',cancelled:'Cancelled'};
+    $('#desk').innerHTML=`<div class="stack" style="gap:24px">
+      <div class="stats"><div class="stat"><b>${active.length}</b><span>Appointments on ${esc(fmtDay(fromKey(deskDay)))}</span></div><div class="stat"><b>${pend}</b><span>Awaiting confirmation (all days)</span></div><div class="stat"><b>${vid}</b><span>Video consults on this day</span></div></div>
+      <div class="chips" role="group" aria-label="Choose day">${dayKeys.map(k=>`<button class="chipbtn ${k===deskDay?'on':''}" data-day="${k}">${esc(fmtDay(fromKey(k)))}</button>`).join('')}</div>
+      <div class="tbl-wrap"><table><thead><tr><th>Time</th><th>Patient</th><th>Visit</th><th>Status</th><th>Actions</th></tr></thead><tbody>
+      ${list.map(b=>{const s=effStatus(b);return `<tr><td class="num">${fmtTime(b.time)}</td><td>${esc(b.name)}${b.sample?'<span class="sample">Sample</span>':''}${b.phone?`<br><span style="color:var(--muted);font-size:.85rem">+91 ${esc(b.phone)}</span>`:''}</td><td>${esc(VISITS[b.visit].name)}<br><span style="color:var(--muted);font-size:.85rem">${b.mode==='video'?'Video':'In clinic'}${b.files?' · '+b.files+' report(s)':''}</span></td><td><span class="pill ${s}">${label[s]}</span></td><td><div class="row-actions">
+        ${s==='pending'?`<button class="btn small" data-act="confirmed" data-id="${b.id}">Confirm</button>`:''}
+        ${s==='confirmed'&&b.mode==='clinic'?`<button class="btn small ghost" data-act="arrived" data-id="${b.id}">Mark arrived</button>`:''}
+        ${s!=='cancelled'&&s!=='arrived'?`<button class="btn small ghost" data-act="cancelled" data-id="${b.id}">Cancel</button>`:''}
+      </div></td></tr>`;}).join('')||'<tr><td colspan="5">No appointments on this day.</td></tr>'}
+      </tbody></table></div>
+      <div class="card" style="gap:12px"><h3>Doctor unavailable</h3><p>Block a day for leave or surgery. Patients can't book blocked days.</p>
+        <div class="chips">${nextDays(14).map(d=>{const k=dkey(d);return `<button class="chipbtn ${isBlocked(k)?'blocked':''}" data-block="${k}" ${isClosed(d)?'disabled title="Closed on Sundays"':''} aria-pressed="${isBlocked(k)}">${esc(fmtDay(d))}</button>`;}).join('')}</div></div>
+      <p class="note">Prototype: changes are kept only in this browser. The real system would sync to the clinic's account and send WhatsApp/SMS confirmations automatically.</p></div>`;
+    $$('[data-day]').forEach(b=>b.addEventListener('click',()=>{deskDay=b.dataset.day;renderDesk();}));
+    $$('[data-act]').forEach(b=>b.addEventListener('click',()=>{store.status[b.dataset.id]=b.dataset.act;save();renderDesk();}));
+    $$('[data-block]').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.block;store.blocked=isBlocked(k)?store.blocked.filter(x=>x!==k):[...store.blocked,k];save();renderDesk();}));
+  }
+
+  /* ---------- hero booking demo ---------- */
+  (function(){
+    const demo=$('#demo'); if(!demo) return;
+    const durs={1:3200,2:3400,3:4000,4:4800};
+    const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const open=nextDays(10).filter(d=>!isClosed(d)).slice(1,6);
+    $('#demo-days').innerHTML=open.map((d,i)=>`<span class="${i===1?'pk':''}">${d.toLocaleDateString('en-IN',{weekday:'short'})}<b>${d.getDate()}</b></span>`).join('');
+    if(open[1]) $$('.demo-date',demo).forEach(e=>e.textContent=fmtDay(open[1]));
+    let timer;
+    function go(n){
+      demo.dataset.s=String(n);
+      $$('.prog button',demo).forEach(b=>{const k=Number(b.dataset.go);b.classList.toggle('done',k<n);b.classList.toggle('on',k===n);b.style.setProperty('--dur',durs[k]+'ms');});
+      clearTimeout(timer);
+      if(!reduce) timer=setTimeout(()=>go(n%4+1),durs[n]);
+    }
+    $$('.prog button',demo).forEach(b=>b.addEventListener('click',()=>go(Number(b.dataset.go))));
+    go(reduce?4:1);
+  })();
+
+  route();
+})();
+</script>
+</body>
+</html>
