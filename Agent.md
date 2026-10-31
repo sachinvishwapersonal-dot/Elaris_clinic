@@ -2,7 +2,7 @@
 
 ## Project
 - **Goal:** Build a full website + appointment booking system for the clinic.
-- **Source material so far:** two photos of the business card — `Card01.jpeg` (services side) and `Card02.jpeg` (contact side) — plus `Doctor_image.jpeg` (Dr. Purval Vaidya portrait: white coat with name embroidered, stethoscope, glasses; already circle-cropped on a dark gradient, ~700px circle, plain off-white wall behind). Usable for prototype; for launch ask for the original uncropped, high-res photo.
+- **Source material so far:** two photos of the business card — `assets/source-materials/Card01.jpeg` (services side) and `assets/source-materials/Card02.jpeg` (contact side) — plus `assets/source-materials/Doctor_image.jpeg` (Dr. Purval Vaidya portrait: white coat with name embroidered, stethoscope, glasses; already circle-cropped on a dark gradient, ~700px circle, plain off-white wall behind). Usable for prototype; for launch ask for the original uncropped, high-res photo.
 
 ## Prototype (v1, 2026-10-31)
 - Files: `prototype/index.html` + `prototype/doctor.jpg` (cropped from Doctor_image.jpeg)

@@ -1,6 +1,9 @@
 # Elaris Women & Vision Centre
 
-> Website and appointment booking system for **Elaris Women & Vision Centre** — a specialised fertility, IVF, and women's health clinic in Nagpur, Maharashtra, led by **Dr. Purval Vaidya** (MBBS, DGO, DNB (OBGY)).
+> Website and interactive appointment booking system for **Elaris Women & Vision Centre** — a specialised fertility, IVF, and women's health clinic in Nagpur, Maharashtra, led by **Dr. Purval Vaidya** (MBBS, DGO, DNB (OBGY)).
+
+🔗 **Live Prototype on GitHub Pages:**  
+👉 **[https://sachinvishwapersonal-dot.github.io/Elaris_clinic/](https://sachinvishwapersonal-dot.github.io/Elaris_clinic/)**
 
 ---
 
@@ -16,7 +19,7 @@
 
 ## ✨ Features & Architecture
 
-The prototype is built as a lightweight, zero-dependency single-page application (SPA) with responsive design and hash-based navigation:
+The website is a lightweight, zero-dependency single-page application (SPA) with responsive design and hash-based navigation:
 
 * **Hash-Routed Views:**
   * `#home` — Hero with an animated 4-step booking preview, treatment tiles, specialist guidance, and care overview.
@@ -36,6 +39,19 @@ The prototype is built as a lightweight, zero-dependency single-page application
 
 ---
 
+## 🌐 GitHub Pages Deployment
+
+The repository is structured so GitHub Pages deploys seamlessly from the root directory:
+
+1. In your GitHub repository, navigate to **Settings** → **Pages**.
+2. Under **Build and deployment**:
+   * **Source:** `Deploy from a branch`
+   * **Branch:** `main` / `/(root)`
+3. Click **Save**. Your site will be live at:
+   `https://sachinvishwapersonal-dot.github.io/Elaris_clinic/`
+
+---
+
 ## ⚖️ Indian Medical & Regulatory Compliance
 
 * **PC-PNDT Act, 1994:** Statutory notice displayed across the site and ultrasonography sections confirming sex determination is prohibited and not performed.
@@ -49,20 +65,25 @@ The prototype is built as a lightweight, zero-dependency single-page application
 
 ```
 .
-├── prototype/
-│   ├── index.html          # Complete responsive web application & booking system
-│   └── doctor.jpg          # Cropped portrait for the About page
-├── Agent.md                # Project brief, client notes, compliance rules, open questions
-├── Card01.jpeg             # Source business card: services side
-├── Card02.jpeg             # Source business card: contact side
-├── Doctor_image.jpeg       # High-res source portrait of Dr. Purval Vaidya
-├── .gitignore              # Standard ignore rules
-└── README.md               # Repository documentation
+├── index.html                      # Main entry point served directly by GitHub Pages
+├── doctor.jpg                      # Doctor portrait asset used by index.html
+├── .nojekyll                       # Disables Jekyll processing for static files
+├── .gitignore                      # Standard git ignore rules
+├── README.md                       # Repository documentation & live links
+├── Agent.md                        # Project brief, client notes, compliance rules
+├── prototype/                      # Prototype archive / alternate path (/prototype/)
+│   ├── index.html
+│   └── doctor.jpg
+└── assets/
+    └── source-materials/           # Original business card photos and high-res doctor portrait
+        ├── Card01.jpeg
+        ├── Card02.jpeg
+        └── Doctor_image.jpeg
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Local Development
 
 To view and test the website locally:
 
@@ -72,12 +93,11 @@ To view and test the website locally:
    cd Elaris_clinic
    ```
 
-2. Open the prototype directly in any web browser:
-   * **Windows:** Double-click `prototype/index.html` or run:
+2. Open `index.html` in your browser:
+   * **Windows:** Double-click `index.html` or run:
      ```powershell
-     Start-Process "prototype/index.html"
+     Start-Process "index.html"
      ```
-   * Or serve using any static server (e.g. `npx serve prototype` or Python's `python -m http.server`).
 
 ---
 
